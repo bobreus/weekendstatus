@@ -3,10 +3,15 @@
 
 <head>
   <meta name="description" content="Weekend yet?">
+
   <link rel="icon" href="favicon.ico"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400&amp;subset=latin" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <script src="date.js" type="text/javascript"></script>
+  <script src="weekendstatus.js" type="text/javascript"></script>
+  
   <title>Weekendstatus</title>
 </head>
 
@@ -15,34 +20,11 @@
     Weekend Loading Status Calculator
   </h1>
   <br>
-  <h2 class="info">v1.5 by <a href="https://zwebfek.github.io">ZwebFek</a> and <a href="#">Jepey</a></h2>
+  <h2 class="info">v1.5 by <a href="https://zwebfek.github.io">ZwebFek</a> and <a href="https://github.com/DylanKoster">Jepey</a></h2>
   <div class="block1" id="showp"></div>
   <div id="pbc">
     <div id="pb"></div>
   </div>
 </body>
-
-<script src="date.js" type="text/javascript"></script>
-<script>
-showDiff();
-
-function showDiff() {
-  var date1 = Date.parse('last monday');
-  var date2 = new Date();
-  var diff = (Math.abs(date2 - date1));
-  var result = (diff / 4320000) + "%";
-  if (Date.today().is().monday()) {
-    date1 = Date.parse('today');
-    diff = (Math.abs(date2 - date1));
-    result = (diff / 4320000) + "%";
-  } else if (diff > 432000000) {
-    result = 100 + "%";
-  }
-  document.getElementById("showp").innerHTML = result;
-  document.getElementById("pb").style.width = result;
-
-  setTimeout(showDiff, 1000);
-}
-</script>
 
 </html>
