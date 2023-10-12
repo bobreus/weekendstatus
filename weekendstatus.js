@@ -1,11 +1,20 @@
 function showDiff() {
-    let date = Date.now()-Date.monday();
-    let weekend = Date.monday().next().friday().at("18:00")-Date.monday();
+    let lastMonday = new Date();
+    lastMonday.setDate(lastMonday.getDate() - (lastMonday.getDay() + 6) % 7);
+    lastMonday.setHours(0, 0, 0, 0);
 
-    if (date > weekend) {
+    let currentDateTime = new Date() - lastMonday;
+    console.log(currentDateTime);
+
+    let thisFriday = new Date();
+    thisFriday.setDate(lastMonday.getDate() + 4);
+    thisFriday.setHours(18, 0, 0, 0);
+    thisFriday -= lastMonday;
+
+    if (currentDateTime > thisFriday) {
         result = 100 + "%";
     } else {
-        result = ((weekend-date)/weekend)*100 + "%";
+        result = (currentDateTime/thisFriday)*100 + "%";
     }
 
     document.getElementById("showp").innerHTML = result;
